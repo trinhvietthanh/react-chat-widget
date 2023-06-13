@@ -17,6 +17,13 @@
   }
 }
 
+ul {
+  list-style-type: none;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
 @media screen and (max-width: 800px)  {
   .rcw-messages-container {
     @include messages-container-fs;

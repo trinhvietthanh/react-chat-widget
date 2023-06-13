@@ -32,7 +32,7 @@ function Messages({ profileAvatar, profileClientAvatar, showTimeStamp }: Props) 
     if (showChat && badgeCount) dispatch(markAllMessagesRead());
     else dispatch(setBadgeCount(messages.filter((message) => message.unread).length));
   }, [messages, badgeCount, showChat]);
-    
+
   const getComponentToRender = (message: MessageTypes | Link | CustomCompMessage) => {
     const ComponentToRender = message.component;
     if (message.type === 'component') {
@@ -48,22 +48,29 @@ function Messages({ profileAvatar, profileClientAvatar, showTimeStamp }: Props) 
   //     dispatch(hideAvatar(index));
   //   }
   // }
+
+  const renderMessage = (message, index) => {
+    return (
+      <div className={`rcw-message ${isClient(message.sender) ? 'rcw-message-client' : ''} ${message.type === 'component' ? 'rcw-message-component' : ''}`}
+        key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
+        {((profileAvatar && !isClient(message.sender)) || (profileClientAvatar && isClient(message.sender))) &&
+          message.showAvatar &&
+          <img
+            src={isClient(message.sender) ? profileClientAvatar : profileAvatar}
+            className={`rcw-avatar ${isClient(message.sender) ? 'rcw-avatar-client' : ''}`}
+            alt="profile"
+          />
+        }
+        {getComponentToRender(message)}
+      </div>
+    )
+  }
+
   const isClient = (sender) => sender === MESSAGE_SENDER.CLIENT;
   return (
     <div id="messages" className="rcw-messages-container" ref={messageRef}>
       {messages?.map((message, index) =>
-        <div className={`rcw-message ${isClient(message.sender) ? 'rcw-message-client' : ''} ${message.type === 'component' ? 'rcw-message-component' : ''}` } 
-          key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
-          {((profileAvatar && !isClient(message.sender)) || (profileClientAvatar && isClient(message.sender))) &&
-            message.showAvatar && 
-            <img 
-              src={isClient(message.sender) ? profileClientAvatar : profileAvatar} 
-              className={`rcw-avatar ${isClient(message.sender) ? 'rcw-avatar-client' : ''}`} 
-              alt="profile"
-            />
-          }
-          {getComponentToRender(message)}
-        </div>
+        renderMessage(message, index)
       )}
       <Loader typing={typing} profileAvatar={profileAvatar} />
     </div>

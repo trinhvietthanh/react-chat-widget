@@ -57,9 +57,7 @@ const messagesReducer = {
         flag = true
         let res;
         if (text == "[DONE]") {
-          console.log("Before: ", message.text);
           res = urlify(message.text);
-          console.log("Content: ",res);
         } else {
           res = message.text + text;
         }

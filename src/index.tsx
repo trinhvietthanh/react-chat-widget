@@ -14,6 +14,7 @@ type Props = {
   subtitle?: string;
   senderPlaceHolder?: string;
   showCloseButton?: boolean;
+  showIconHeader?: boolean
   fullScreenMode?: boolean;
   autofocus?: boolean;
   profileAvatar?: string;
@@ -34,6 +35,7 @@ type Props = {
   handleSubmit?: AnyFunction;
   showBadge?: boolean;
   resizable?: boolean;
+  currentUrl?: string;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -42,6 +44,7 @@ function ConnectedWidget({
   subtitle,
   senderPlaceHolder,
   showCloseButton,
+  showIconHeader,
   fullScreenMode,
   autofocus,
   profileAvatar,
@@ -63,7 +66,8 @@ function ConnectedWidget({
   handleSubmit,
   showBadge,
   resizable,
-  emojis
+  emojis,
+  currentUrl,
 }: Props) {
   return (
     <Provider store={store}>
@@ -77,6 +81,7 @@ function ConnectedWidget({
         profileAvatar={profileAvatar}
         profileClientAvatar={profileClientAvatar}
         showCloseButton={showCloseButton}
+        showIconHeader={showIconHeader}
         fullScreenMode={fullScreenMode}
         autofocus={autofocus}
         customLauncher={launcher}
@@ -95,6 +100,7 @@ function ConnectedWidget({
         showBadge={showBadge}
         resizable={resizable}
         emojis={emojis}
+        currentUrl={currentUrl}
       />
     </Provider>
   );
@@ -102,7 +108,6 @@ function ConnectedWidget({
 
 const defaultProps = {
   title: 'Welcome',
-  subtitle: 'This is your chat subtitle',
   senderPlaceHolder: 'Type a message...',
   showCloseButton: true,
   fullScreenMode: false,
@@ -114,6 +119,7 @@ const defaultProps = {
   launcherCloseImg: '',
   sendButtonAlt: 'Send',
   showTimeStamp: true,
+  showIconHeader: true,
   imagePreview: false,
   zoomStep: 80,
   showBadge: true,

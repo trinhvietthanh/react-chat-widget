@@ -51,24 +51,79 @@
   }
 }
 
-// @media screen and (max-width: 800px) {
+.rcw-icon {
+  @include icon-header-fs;
+}
 
-//   .rcw-conversation-container {
+.rcw-icon-twitter {
+  @include icon-twitter-out-fs;
+}
 
-//     .rcw-header {
-//       @include header-fs;
-//     }
+.rcw-icon-out {
+  @include icon-header-out-fs;
+  cursor: pointer;
+}
 
-//     .rcw-title {
-//       @include title-fs;
-//     }
+.disabled {
+  display: none;
+}
 
-//     .rcw-close-button {
-//       @include close-button-fs;
-//     }
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
 
-//     .rcw-close {
-//       @include close-fs;
-//     }
-//   }
-// }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (max-width: 800px) {
+
+  .rcw-conversation-container {
+
+    .rcw-header {
+      @include header-fs;
+    }
+
+    .rcw-title {
+      @include title-fs;
+    }
+
+    .rcw-close-button {
+      @include close-button-fs;
+    }
+
+    .rcw-close {
+      @include close-fs;
+    }
+  }
+}

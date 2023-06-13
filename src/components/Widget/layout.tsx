@@ -15,7 +15,7 @@ import './style.scss';
 type Props = {
   title: string;
   titleAvatar?: string;
-  subtitle: string;
+  subtitle?: string;
   onSendMessage: AnyFunction;
   onToggleConversation: AnyFunction;
   senderPlaceHolder: string;
@@ -23,6 +23,7 @@ type Props = {
   profileAvatar?: string;
   profileClientAvatar?: string;
   showCloseButton: boolean;
+  showIconHeader: boolean;
   fullScreenMode: boolean;
   autofocus: boolean;
   customLauncher?: AnyFunction;
@@ -38,7 +39,8 @@ type Props = {
   zoomStep?: number;
   showBadge?: boolean;
   resizable?: boolean;
-  emojis?: boolean
+  emojis?: boolean;
+  currentUrl?: string;
 }
 
 function WidgetLayout({
@@ -52,6 +54,7 @@ function WidgetLayout({
   profileAvatar,
   profileClientAvatar,
   showCloseButton,
+  showIconHeader,
   fullScreenMode,
   autofocus,
   customLauncher,
@@ -67,7 +70,8 @@ function WidgetLayout({
   zoomStep,
   showBadge,
   resizable,
-  emojis
+  emojis,
+  currentUrl,
 }: Props) {
   const dispatch = useDispatch();
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
@@ -137,6 +141,8 @@ function WidgetLayout({
           profileClientAvatar={profileClientAvatar}
           toggleChat={onToggleConversation}
           showCloseButton={showCloseButton}
+          showIconHeader={showIconHeader}
+          currentUrl={currentUrl}
           disabledInput={dissableInput}
           autofocus={autofocus}
           titleAvatar={titleAvatar}

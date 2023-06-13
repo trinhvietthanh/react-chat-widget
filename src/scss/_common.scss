@@ -40,6 +40,30 @@
   height: 20px;
 }
 
+@mixin icon-header-out-fs {
+  background-color: $turqois-1;
+  border: 0;
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  width: 40px;
+}
+
+@mixin icon-twitter-out-fs {
+  border: 0;
+  display: block;
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  width: 40px;
+}
+
+@mixin icon-header-fs {
+  width: 25px;
+  height: 25px;
+}
+
 @mixin messages-container-fs {
   // height: 100%;
   max-height: none;

@@ -17,9 +17,10 @@ interface ISenderRef {
 
 type Props = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   senderPlaceHolder: string;
   showCloseButton: boolean;
+  showIconHeader: boolean;
   disabledInput: boolean;
   autofocus: boolean;
   className: string;
@@ -34,6 +35,7 @@ type Props = {
   showTimeStamp: boolean;
   resizable?: boolean;
   emojis?: boolean;
+  currentUrl?: string;
 };
 
 function Conversation({
@@ -53,6 +55,8 @@ function Conversation({
   onTextInputChange,
   sendButtonAlt,
   showTimeStamp,
+  showIconHeader,
+  currentUrl,
   resizable,
   emojis
 }: Props) {
@@ -112,7 +116,9 @@ function Conversation({
         subtitle={subtitle}
         toggleChat={toggleChat}
         showCloseButton={showCloseButton}
+        showIconHeader={showIconHeader}
         titleAvatar={titleAvatar}
+        currentUrl={currentUrl}
       />
       <Messages
         profileAvatar={profileAvatar}

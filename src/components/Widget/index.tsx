@@ -9,11 +9,12 @@ import WidgetLayout from './layout';
 type Props = {
   title: string;
   titleAvatar?: string;
-  subtitle: string;
+  subtitle?: string;
   senderPlaceHolder: string;
   profileAvatar?: string;
   profileClientAvatar?: string;
   showCloseButton: boolean;
+  showIconHeader: boolean;
   fullScreenMode: boolean;
   autofocus: boolean;
   customLauncher?: AnyFunction;
@@ -34,6 +35,7 @@ type Props = {
   showBadge?: boolean;
   resizable?: boolean;
   emojis?: boolean;
+  currentUrl?: string;
 }
 
 function Widget({
@@ -44,6 +46,7 @@ function Widget({
   profileAvatar,
   profileClientAvatar,
   showCloseButton,
+  showIconHeader,
   fullScreenMode,
   autofocus,
   customLauncher,
@@ -63,7 +66,8 @@ function Widget({
   handleSubmit,
   showBadge,
   resizable,
-  emojis
+  emojis,
+  currentUrl
 }: Props) {
   const dispatch = useDispatch();
 
@@ -102,6 +106,8 @@ function Widget({
       fullScreenMode={fullScreenMode}
       autofocus={autofocus}
       customLauncher={customLauncher}
+      showIconHeader={showIconHeader}
+      currentUrl={currentUrl}
       onTextInputChange={handleTextInputChange}
       chatId={chatId}
       launcherOpenLabel={launcherOpenLabel}
