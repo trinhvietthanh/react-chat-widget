@@ -120,20 +120,9 @@ export function scrollToBottom(messagesDiv: HTMLDivElement | null) {
   if (scrollOffset) scrollWithSlowMotion(messagesDiv, scrollTop, scrollOffset);
 }
 export function urlify(text) {
-  const urlRegex = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/g;
-  const urls = text.match(urlRegex) || []; // Extract all URLs from the text
-  const replacedText = urls.reduce(function(result, url) {
-    const regex = new RegExp(
-      `(<\\s*a[^>]*href=[\\'"]?)${url}([\\'"][^>]*>)`,
-      "i"
-    );
-    const urlInTagRegex = new RegExp(`<[^>]*${url}[^>]*>`, "i");
-    if (regex.test(result) || urlInTagRegex.test(result)) {
-      return result; // URL is already wrapped in <a> tags or is part of an HTML tag, return result as it is
-    } else {
-      const replacedUrl = `<a class="link_message" href="${url}">${url}</a>`; // Wrap the URL in <a> tags
-      return result.replace(url, replacedUrl); // Replace the URL in the result with the wrapped URL
-    }
-  }, text);
-  return replacedText;
+   var urlRegex = /(?<!]\(|href=["'])(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/g;
+   const v = text.replace(urlRegex, function(url) {
+     return '<a href="' + url + '">' + url + "</a>";
+   });
+   return v;
 }

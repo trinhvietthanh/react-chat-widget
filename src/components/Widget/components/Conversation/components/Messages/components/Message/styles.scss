@@ -10,6 +10,10 @@
   &-client {
     flex-direction: row-reverse;
   }
+  &-component {
+    margin: 0 !important;
+    padding: 5px;
+  }
 }
 
 .rcw-timestamp {
