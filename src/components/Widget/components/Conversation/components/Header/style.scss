@@ -16,7 +16,7 @@
   .rcw-title {
     font-size: 24px;
     margin: 0;
-    padding: 15px 0;
+    padding: 10px 0;
   }
 
   .rcw-close-button {
@@ -53,6 +53,15 @@
 
 .rcw-icon {
   @include icon-header-fs;
+}
+
+.rcw-buttons{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 66px;
+  right: 12px;
+  top: 28px;
 }
 
 .rcw-icon-twitter {
@@ -106,24 +115,24 @@
   opacity: 1;
 }
 
-@media screen and (max-width: 800px) {
+// @media screen and (max-width: 800px) {
 
-  .rcw-conversation-container {
+//   .rcw-conversation-container {
 
-    .rcw-header {
-      @include header-fs;
-    }
+//     .rcw-header {
+//       @include header-fs;
+//     }
 
-    .rcw-title {
-      @include title-fs;
-    }
+//     .rcw-title {
+//       @include title-fs;
+//     }
 
-    .rcw-close-button {
-      @include close-button-fs;
-    }
+//     .rcw-close-button {
+//       @include close-button-fs;
+//     }
 
-    .rcw-close {
-      @include close-fs;
-    }
-  }
-}
+//     .rcw-close {
+//       @include close-fs;
+//     }
+//   }
+// }
