@@ -21,10 +21,9 @@ function MessageStream({ message, showTimeStamp }: Props) {
     img: ['rcw-message-img']
   })
   .use(markdownItSup)
-  .use(markdownItSanitizer)
-  .use(markdownItLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } })
+  // .use(markdownItSanitizer)
+   .use(markdownItLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' }, omitLinks: [] })
   .render(message.text);
-  
   return (
     <div className={`rcw-${message.sender}`} id={message.customId}>
       <div className="rcw-message-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML.replace(/\n$/, '') }} />
